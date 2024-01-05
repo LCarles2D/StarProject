@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxk1ofjo4ocoa"]
+
+[ext_resource type="Script" path="res://Boveda/Boveda.gd" id="1_clqi2"]
+[ext_resource type="ArrayMesh" uid="uid://djtpmrqpmdajg" path="res://Boveda/esfera.obj" id="3_o8ypv"]
+[ext_resource type="Script" path="res://Boveda/Esfera.gd" id="4_f3116"]
+[ext_resource type="Script" path="res://Boveda/Corio.gd" id="5_ixer7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7teo8"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il63s"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kavuq"]
+
+[node name="Boveda" type="Node3D"]
+script = ExtResource("1_clqi2")
+
+[node name="Esfera" type="MeshInstance3D" parent="."]
+transform = Transform3D(1500, 0, 0, 0, 1500, 0, 0, 0, 1500, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7teo8")
+mesh = ExtResource("3_o8ypv")
+script = ExtResource("4_f3116")
+
+[node name="Corio" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_il63s")
+mesh = SubResource("SphereMesh_kavuq")
+script = ExtResource("5_ixer7")
