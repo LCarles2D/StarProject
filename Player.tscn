@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bt7ttq32fiipe"]
+[gd_scene load_steps=10 format=3 uid="uid://bt7ttq32fiipe"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_006hh"]
 [ext_resource type="Script" path="res://Player_mov.gd" id="2_ecdgj"]
@@ -14,86 +14,6 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ktjs"]
 albedo_color = Color(0.741176, 0.741176, 0, 1)
-
-[sub_resource type="Animation" id="Animation_spm7f"]
-resource_name = "clockShow"
-length = 0.5
-step = 0.05
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.297193, -0.25, 0, 0.25, 0, -0.393523, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 1),
-"points": PackedFloat32Array(-1.05681, -0.25, 0, 0.25, 0, -0.262232, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.734356, -0.25, 0, 0.25, 0, -0.800019, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-
-[sub_resource type="Animation" id="Animation_ilwx0"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.297193, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-1.05681, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.734356, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tu87q"]
-_data = {
-"RESET": SubResource("Animation_ilwx0"),
-"clockShow": SubResource("Animation_spm7f")
-}
 
 [sub_resource type="GDScript" id="GDScript_xae54"]
 
@@ -127,16 +47,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220065, -0.0516574)
 transform = Transform3D(0.244439, 0, 0, 0, 0.244439, 0, 0, 0, 0.244439, 0, 0, 0)
 
 [node name="Reloj" type="MeshInstance3D" parent="CharacterBody3D/Head/Camera3D"]
-transform = Transform3D(0.588564, 0.0710462, 0, -0.26508, 0.0343123, -0.615199, -0.502769, 0.065079, 0.324358, -0.297193, -1.05681, -0.734356)
+transform = Transform3D(0.588564, 0.0710462, 0, -0.26508, 0.0343123, -0.615199, -0.502769, 0.065079, 0.324358, -0.297193, -0.594856, -0.734356)
+visible = false
 mesh = SubResource("CylinderMesh_sgf2i")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ktjs")
 script = ExtResource("4_hksul")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D/Head/Camera3D/Reloj"]
-libraries = {
-"": SubResource("AnimationLibrary_tu87q")
-}
 
 [node name="Control" type="Control" parent="."]
 visible = false

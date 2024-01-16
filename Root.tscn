@@ -39,8 +39,6 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [node name="Root" type="Node3D"]
 
 [node name="Boveda" parent="." instance=ExtResource("1_xolsa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.203935, 0.193478)
-visible = false
 
 [node name="Telescopio" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.244947, 0.173208, 0, -0.173208, 0.244947, -1.18937, 0.844832, 0)
