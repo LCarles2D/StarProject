@@ -12,6 +12,6 @@ func _process(_d):
 	var theta = Corio_Dec * Global.DegtoRad
 	var xi    = (90 - Global.latitude) * Global.DegtoRad
 	
-	position.x =  Global.radius*(  cos( phi ) * cos( theta ) )
-	position.z =  Global.radius*(  sin( phi ) * cos( theta ) * cos( xi ) + sin( theta ) * sin( xi ) )
-	position.y =  Global.radius*( -sin( phi ) * cos( theta ) * sin( xi ) + sin( theta ) * cos( xi ) )
+	position.x =  2*Global.radius*(  cos( phi ) * cos( theta ) )
+	position.z =  2*Global.radius*(  sin( phi ) * cos( theta ) * cos( xi ) + sin( theta ) * sin( xi ) )
+	position.y =  2*Global.radius*( -sin( phi ) * cos( theta ) * sin( xi ) + sin( theta ) * cos( xi ) )
