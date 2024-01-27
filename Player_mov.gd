@@ -25,9 +25,8 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camara.rotate_x(-event.relative.y * SENSITIVITY)
-		camara.rotation.x = clamp(camara.rotation.x, deg_to_rad(-40), deg_to_rad(60))
-
-
+		camara.rotation.x = clamp(camara.rotation.x, deg_to_rad(-60), deg_to_rad(89.5))
+		
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -66,6 +65,29 @@ func _physics_process(delta):
 	t_move += delta * velocity.length() * float(is_on_floor())
 	camara.transform.origin = _HeadMove(t_move)
 	move_and_slide()
+	
+	
+	#OBTENIENDO HACIA ADONDE APUNTA EL JUGADOR (TAREA PARA LUIS MOVER ESTO A UN SITIO CON MAS SENTIDO)
+	var A   = PI - head.rotation.y
+	var a   = camara.rotation.x
+	var phi = Global.latitude*Global.DegtoRad
+	var d   = asin( sin(phi) * sin(a) + cos(phi) * cos(a) * cos(A) )
+		
+	var H    = 0
+	var sinH = - (cos(a)/cos(d))*sin(A)
+	var cosH = sin(a)/(cos(phi)*cos(d)) - tan(phi)*tan(d)
+		
+	if sinH >= 0:
+		H = acos(cosH)
+	else:
+		H = asin(sinH)	
+		if cosH < 0:
+			H = PI - H
+		
+	Global.Camera_Declination = d / Global.DegtoRad
+	Global.Camera_Ascension   = (Global.Sideral_Time*Global.SectoRad - H)/ Global.HoutoRad
+		
+	#print(Vector2(Global.Camera_Declination,Global.Camera_Ascension))
 	
 func _HeadMove(time):
 	var pos = Vector3(0,0,0)

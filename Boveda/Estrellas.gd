@@ -41,11 +41,7 @@ func pol():
 	var pollu = Global.Pollution
 	var mat = material_override
 	var col = mat.get_albedo()
-	if pollu == 0:
+	if pollu == 1:
 		self.hide()
-	if pollu != 0:
+	if pollu < 1:
 		self.show()
-	mat.set_emission_energy_multiplier(pollu)
-	set_material_override(mat)
-
-	
