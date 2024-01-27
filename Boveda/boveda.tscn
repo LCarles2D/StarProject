@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxk1ofjo4ocoa"]
+[gd_scene load_steps=9 format=3 uid="uid://dxk1ofjo4ocoa"]
 
 [ext_resource type="Script" path="res://Boveda/Boveda.gd" id="1_clqi2"]
 [ext_resource type="Script" path="res://Boveda/Moon.gd" id="2_3hjd4"]
@@ -17,22 +17,6 @@ emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 16.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_kavuq"]
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_aim07"]
-mie_color = Color(0.690196, 0, 0, 1)
-ground_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Sky" id="Sky_4bpvr"]
-sky_material = SubResource("PhysicalSkyMaterial_aim07")
-
-[sub_resource type="Environment" id="Environment_rwb0e"]
-background_mode = 2
-sky = SubResource("Sky_4bpvr")
-fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
-fog_light_energy = 0.23
-fog_sun_scatter = 0.02
-fog_sky_affect = 0.0
-adjustment_enabled = true
 
 [node name="Boveda" type="Node3D"]
 script = ExtResource("1_clqi2")
@@ -54,6 +38,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.48256, 0)
 light_energy = 3.0
 light_angular_distance = 5.0
 script = ExtResource("5_th5vk")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rwb0e")

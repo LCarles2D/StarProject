@@ -15,8 +15,10 @@ const FOV_CHANGE = 1.1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
 
+#Head
 @onready var head = $Head
 @onready var camara = $Head/Camera3D
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -29,6 +31,15 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	
+	#Permitir los controles dependiendo del gamestate
+	if Global._get_gamestate() != Global.GameState.PLAYING:
+		if Input.is_action_just_pressed("close") and (Global._get_gamestate() == Global.GameState.TELESCOPE):
+			Global._set_gamestate(Global.GameState.PLAYING)
+			camara.current = true
+			$"../Control".visible = true
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -39,6 +50,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("run"):
 		speed = RUN_SPEED
+		
 	else:
 		speed = WALK_SPEED
 
@@ -72,4 +84,7 @@ func _HeadMove(time):
 	pos.y = sin(time * FREQ) * AMP
 	pos.x = cos(time * FREQ / 2) * AMP
 	return pos
+
+
+
 

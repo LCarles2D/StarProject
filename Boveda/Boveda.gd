@@ -45,3 +45,4 @@ func _process(_d):
 	for x in Stars:
 		x[0].pos()
 		x[0].pol()
+

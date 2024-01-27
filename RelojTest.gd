@@ -14,7 +14,7 @@ func _ready():
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("reloj"):
-		if Avaible:
+		if Avaible and (Global._get_gamestate() == Global.GameState.PLAYING):
 			_ShowClock(relojVisible)
 
 
