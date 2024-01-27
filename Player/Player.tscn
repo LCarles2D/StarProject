@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt7ttq32fiipe"]
+[gd_scene load_steps=9 format=3 uid="uid://bt7ttq32fiipe"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_006hh"]
-[ext_resource type="Script" path="res://Player_mov.gd" id="2_ecdgj"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_vbo5i"]
+[ext_resource type="Script" path="res://Player/Player_mov.gd" id="2_ecdgj"]
 [ext_resource type="Script" path="res://Escenario/InteractionHurtbox.gd" id="3_gcdd8"]
 [ext_resource type="Script" path="res://RelojTest.gd" id="4_hksul"]
 
@@ -15,10 +15,9 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ktjs"]
 albedo_color = Color(0.741176, 0.741176, 0, 1)
 
-[sub_resource type="GDScript" id="GDScript_xae54"]
-
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_006hh")
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("1_vbo5i")
+hurtbox = NodePath("CharacterBody3D/InteractionHurtbox")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(4.091, 0, 0, 0, 4.091, 0, 0, 0, 4.091, 0, 0, 0)
@@ -33,7 +32,7 @@ transform = Transform3D(0.244439, 0, 0, 0, 0.244439, 0, 0, 0, 0.244439, 0, 0, 0)
 script = ExtResource("3_gcdd8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/InteractionHurtbox"]
-transform = Transform3D(1.933, 0, 0, 0, 1.933, 0, 0, 0, 1.933, 0, 0, 0)
+transform = Transform3D(1.673, 0, 0, 0, 1.673, 0, 0, 0, 1.673, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_1cbyp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
@@ -45,10 +44,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220065, -0.0516574)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 transform = Transform3D(0.244439, 0, 0, 0, 0.244439, 0, 0, 0, 0.244439, 0, 0, 0)
+current = true
 
 [node name="Reloj" type="MeshInstance3D" parent="CharacterBody3D/Head/Camera3D"]
 transform = Transform3D(0.588564, 0.0710462, 0, -0.26508, 0.0343123, -0.615199, -0.502769, 0.065079, 0.324358, -0.297193, -0.594856, -0.734356)
 visible = false
+layers = 4
 mesh = SubResource("CylinderMesh_sgf2i")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_8ktjs")
@@ -64,9 +65,11 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -76.0
 offset_top = -291.0
-offset_right = 76.0
+offset_right = 75.9991
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
@@ -85,4 +88,5 @@ size_flags_horizontal = 4
 text = "Press E to interact"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = SubResource("GDScript_xae54")
+
+[connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D" method="_on_input_event"]

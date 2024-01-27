@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cealo2pcjxj3y"]
+
+[ext_resource type="Script" path="res://RelojTest.gd" id="1_2v3ly"]
+[ext_resource type="Script" path="res://Escenario/InteractionHitbox.gd" id="2_8osj7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uxgyw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmahu"]
+albedo_color = Color(0.741176, 0.741176, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w10ih"]
+size = Vector3(1.795, 1, 2.8)
+
+[node name="Reloj" type="Node3D"]
+
+[node name="Reloj" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.10457, 0, 0, 0, 0.020455, 0, 0, 0, 0.69547, 0, 0, 0)
+mesh = SubResource("CylinderMesh_uxgyw")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_xmahu")
+script = ExtResource("1_2v3ly")
+
+[node name="InteractionHitbox" type="Area3D" parent="Reloj"]
+transform = Transform3D(1.53, 0, 0, 0, 1.53, 0, 0, 0, 1.53, 0, 0, 0)
+script = ExtResource("2_8osj7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reloj/InteractionHitbox"]
+shape = SubResource("BoxShape3D_w10ih")
