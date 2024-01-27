@@ -14,7 +14,7 @@ func _process(_d):
 	Moon_des = 595 * sin( (198 + 1.9713*days)*Global.DegtoRad ) + 442 * sin( (175 + 0.9856*days)*Global.DegtoRad ) + D
 	Moon_Dec = Moon_inc * sin( A_des * Global.HoutoRad )
 	Moon_Asc = A_des + Moon_des / (Global.MinutesperHour*Global.SecondsperMinute)
-	
+
 	var phi   = Global.Sideral_Time * Global.SectoRad - Moon_Asc * Global.HoutoRad
 	var theta = Moon_Dec * Global.DegtoRad
 	var xi    = (90 - Global.latitude) * Global.DegtoRad

@@ -59,7 +59,7 @@ script = ExtResource("4_pf5qs")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.48256, 0)
 light_energy = 3.0
-light_angular_distance = 5.0
+light_angular_distance = 3.0
 script = ExtResource("5_th5vk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

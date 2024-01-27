@@ -33,6 +33,14 @@ var DegtoRad = PI/180
 var HoutoRad = 2*PI/HoursperDay
 var SectoRad = 2*PI/(HoursperDay*MinutesperHour*SecondsperMinute)
 
+#ESTADOS DEL JUEGO
+enum GameState {
+	PLAYING,
+	TELESCOPE,
+	LOOKING
+}
+var currentGamestate = GameState.PLAYING
+
 func _process(dt):
 	Sideral_Time += dt*Time_Factor
 	if Sideral_Time > HoursperDay*MinutesperHour*SecondsperMinute:
@@ -48,3 +56,10 @@ func _process(dt):
 	Time_Equation = 595 * sin( (198 + 1.9713*days)*DegtoRad ) + 442 * sin( (175 + 0.9856*days)*DegtoRad )
 	Solar_Hour_Angle = Solar_Mean_Time + Time_Equation / (MinutesperHour*SecondsperMinute)
 	Solar_Declination = Ecliptic_Inclination * sin( Solar_Ascencion * HoutoRad )
+
+# SETTERS Y GETTERS PARA EL GAMESTATE
+func _set_gamestate(new_state):
+	currentGamestate = new_state
+
+func _get_gamestate():
+	return currentGamestate

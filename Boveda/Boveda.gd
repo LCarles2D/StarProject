@@ -14,15 +14,15 @@ var Stars  = [
 	[null,"N1",Const[0][1] - 3.0*factord,Const[0][2] + 0.0*factora,-0.7,Color(1,1,1)], #GAMMA
 	[null,"N1",Const[0][1] + 1.2*factord,Const[0][2] - 2.0*factora,-0.5,Color(1,1,1)], #DELTA
 	[null,"N1",Const[0][1] + 1.0*factord,Const[0][2] + 1.0*factora,+0.0,Color(1,1,1)], #EPSILON
-	[null,"N1",Const[0][1] - 0.6*factord,Const[0][2] - 1.0*factora,+0.2,Color(1,1,1)], #DSETA
+	[null,"N1",Const[0][1] - 0.6*factord,Const[0][2] - 1.0*factora,+0.2,Color(1,1,1)], #SETA
 	[null,"N1",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)], #ETA
 	#ESTRELLAS EXTRA:CUERNITOS *SIN NOMBRE* 
-	[null,"N1",Const[0][1] + 3.2*factord,Const[0][2] - 1.0*factora,+2.5,Color(1,1,1)],
-	[null,"N1",Const[0][1] + 1.2*factord,Const[0][2] - 2.2*factora,+2.1,Color(1,1,1)],
+	[null,"",Const[0][1] + 3.2*factord,Const[0][2] - 1.0*factora,+2.5,Color(1,1,1)],
+	[null,"",Const[0][1] + 1.2*factord,Const[0][2] - 2.2*factora,+2.1,Color(1,1,1)],
 	#ESTRELLAS EXTRA:PALO 1 *SIN NOMBRE*  PENDIENTE
-	[null,"N1",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
-	[null,"N1",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
-	[null,"N1",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
+	[null,"",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
+	[null,"",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
+	[null,"",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
 	#ESTRELLAS EXTRA:PALO 2 *SIN NOMBRE*  PENDIENTE
 	[null,"N1",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
 	[null,"N1",Const[0][1] - 1.0*factord,Const[0][2] + 2.2*factora,+0.4,Color(1,1,1)],
@@ -60,3 +60,4 @@ func _process(_d):
 	for x in Stars:
 		x[0].pos()
 		x[0].pol()
+

@@ -35,6 +35,7 @@ func pos():
 	self.position.x =  Global.radius*(  cos( phi ) * cos( theta ) )
 	self.position.z =  Global.radius*(  sin( phi ) * cos( theta ) * cos( xi ) + sin( theta ) * sin( xi ) )
 	self.position.y =  Global.radius*( -sin( phi ) * cos( theta ) * sin( xi ) + sin( theta ) * cos( xi ) )
+	
 
 func pol():
 	
