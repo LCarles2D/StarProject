@@ -13,7 +13,6 @@ func _process(_d):
 	Moon_Dec = Moon_inc * sin( A_des * Global.HoutoRad )
 	Moon_Asc = A_des + Moon_des / (Global.MinutesperHour*Global.SecondsperMinute)
 	
-	print(Moon_Asc)
 	#print(Global.Sideral_Time/(Global.HoursperDay*Global.MinutesperHour*Global.SecondsperMinute))
 	
 	var phi   = Global.Sideral_Time * Global.SectoRad - Moon_Asc * Global.HoutoRad

@@ -1,4 +1,3 @@
-class_name InteractionHurtbox
 extends Area3D
 
 signal interaction_avaible
@@ -17,11 +16,10 @@ func _on_area_entered(hitbox: InteractionHitbox):
 	if hitbox == null:
 		return
 	interactionAvaible = true
-	interaction_avaible.emit(interactionAvaible, hitbox.owner)
+	interaction_avaible.emit(interactionAvaible)
 	
 
 func _on_area_exited(hitbox: InteractionHitbox):
 	if hitbox == null:
-		return
-	interactionAvaible = false
-	interaction_avaible.emit(interactionAvaible, hitbox.owner)
+		return	interactionAvaible = false
+	interaction_avaible.emit(interactionAvaible)

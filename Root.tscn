@@ -1,10 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://c63jaadrqnxlb"]
+[gd_scene load_steps=14 format=3 uid="uid://c63jaadrqnxlb"]
 
 [ext_resource type="PackedScene" uid="uid://dxk1ofjo4ocoa" path="res://Boveda/boveda.tscn" id="1_xolsa"]
-[ext_resource type="Script" path="res://RelojTest.gd" id="3_3cbak"]
-[ext_resource type="Script" path="res://Escenario/InteractionHitbox.gd" id="3_nyv6v"]
-[ext_resource type="PackedScene" uid="uid://bt7ttq32fiipe" path="res://Player.tscn" id="4_2jdt6"]
-[ext_resource type="ArrayMesh" uid="uid://u6ft8kyh7q2c" path="res://Escenario/telescopio.obj" id="5_113nh"]
+[ext_resource type="PackedScene" uid="uid://cealo2pcjxj3y" path="res://Escenario/Reloj.tscn" id="2_avc2c"]
+[ext_resource type="PackedScene" uid="uid://bt7ttq32fiipe" path="res://Player/Player.tscn" id="4_2jdt6"]
+[ext_resource type="PackedScene" uid="uid://b2tvy7rjxeblg" path="res://Escenario/Telescopio.tscn" id="5_btv3u"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nr8kd"]
+sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+sky_energy_multiplier = 0.05
+ground_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+
+[sub_resource type="Sky" id="Sky_ayd2p"]
+sky_material = SubResource("ProceduralSkyMaterial_nr8kd")
+
+[sub_resource type="Environment" id="Environment_sn13v"]
+background_mode = 2
+sky = SubResource("Sky_ayd2p")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r15rf"]
 size = Vector2(2500, 2500)
@@ -15,35 +27,20 @@ albedo_color = Color(0.054902, 0.278431, 0, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iy1vr"]
 data = PackedVector3Array(1250, 0, 1250, -1250, 0, 1250, 1250, 0, -1250, -1250, 0, 1250, -1250, 0, -1250, 1250, 0, -1250)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_14u1l"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etty6"]
-albedo_color = Color(0.741176, 0.741176, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_82alw"]
-size = Vector3(1.795, 1, 2.8)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ool2j"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlehd"]
-albedo_color = Color(1, 0, 0.0156863, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_iiuse"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
 [sub_resource type="BoxMesh" id="BoxMesh_qmi26"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xm2pa"]
+albedo_color = Color(0.298039, 0.113725, 0.101961, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hgbtm"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Root" type="Node3D"]
 
-[node name="Boveda" parent="." instance=ExtResource("1_xolsa")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sn13v")
 
-[node name="Telescopio" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.244947, 0.173208, 0, -0.173208, 0.244947, -1.18937, 0.844832, 0)
-visible = false
-mesh = ExtResource("5_113nh")
+[node name="Boveda" parent="." instance=ExtResource("1_xolsa")]
 
 [node name="Plano" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_r15rf")
@@ -59,35 +56,14 @@ light_energy = 0.103
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plano/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iy1vr")
 
-[node name="Reloj" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.10457, 0, 0, 0, 0.020455, 0, 0, 0, 0.69547, 5.51362, 1.76244, -8.37028)
-mesh = SubResource("CylinderMesh_14u1l")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_etty6")
-script = ExtResource("3_3cbak")
-
-[node name="InteractionHitbox" type="Area3D" parent="Reloj"]
-transform = Transform3D(1.53, 0, 0, 0, 1.53, 0, 0, 0, 1.53, 0, 0, 0)
-script = ExtResource("3_nyv6v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Reloj/InteractionHitbox"]
-shape = SubResource("BoxShape3D_82alw")
-
-[node name="Cubo" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.955, 0, 0, 0, 2.955, 0, 0, 0, 2.955, -1, 1.36536, -7.33611)
-visible = false
-mesh = SubResource("BoxMesh_ool2j")
-surface_material_override/0 = SubResource("StandardMaterial3D_tlehd")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Cubo"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cubo/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_iiuse")
-
 [node name="Mesa" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.68, 0, 0, 0, 1.68, 0, 0, 0, 1.68, 5.51902, 0.842203, -8.33611)
 mesh = SubResource("BoxMesh_qmi26")
-skeleton = NodePath("../Cubo/StaticBody3D")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_xm2pa")
+
+[node name="Reloj" parent="Mesa" instance=ExtResource("2_avc2c")]
+transform = Transform3D(0.595238, 0, 0, 0, 0.595238, 0, 0, 0, 0.595238, 0.0295222, 0.5, 0.0034132)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Mesa"]
 
@@ -96,4 +72,7 @@ shape = SubResource("ConcavePolygonShape3D_hgbtm")
 
 [node name="Player" parent="." node_paths=PackedStringArray("clock") instance=ExtResource("4_2jdt6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75797, 1.46655, -5.2045)
-clock = NodePath("../Reloj")
+clock = NodePath("../Mesa/Reloj")
+
+[node name="Telescopio" parent="." instance=ExtResource("5_btv3u")]
+transform = Transform3D(1.79, 0, 0, 0, 1.79, 0, 0, 0, 1.79, -0.559575, 1.19209e-07, -3.20286)
