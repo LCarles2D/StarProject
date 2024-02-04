@@ -1,10 +1,17 @@
 extends MeshInstance3D
 
-var Corio_Col = Color(1,1,1,1)
 var Corio_Asc = 0
 var Corio_Dec = 0
 
+@onready var CorioL = $"../CorioLight"
+
 func _process(_d):
+	
+	var C = pow(CorioL.ColorC,4)
+	var DColor = Color(1,C,C)
+	
+	material_override.set_emission(DColor)
+	
 	Corio_Asc = Global.Solar_Ascencion
 	Corio_Dec = Global.Solar_Declination
 	

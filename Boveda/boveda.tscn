@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxk1ofjo4ocoa"]
+[gd_scene load_steps=14 format=3 uid="uid://dxk1ofjo4ocoa"]
 
 [ext_resource type="Script" path="res://Boveda/Boveda.gd" id="1_clqi2"]
 [ext_resource type="Script" path="res://Boveda/Moon.gd" id="2_3hjd4"]
-[ext_resource type="Script" path="res://Boveda/DirectionalLight3D2.gd" id="4_pf5qs"]
+[ext_resource type="Script" path="res://Boveda/MoonLight.gd" id="4_pf5qs"]
 [ext_resource type="Script" path="res://Boveda/Corio.gd" id="5_ixer7"]
-[ext_resource type="Script" path="res://Boveda/DirectionalLight3D.gd" id="5_th5vk"]
+[ext_resource type="Script" path="res://Boveda/CorioLight.gd" id="5_th5vk"]
+[ext_resource type="Script" path="res://Boveda/WorldEnvironment.gd" id="6_xnt6h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3e5x"]
 albedo_color = Color(0.72549, 0.72549, 0.72549, 1)
@@ -12,27 +13,23 @@ albedo_color = Color(0.72549, 0.72549, 0.72549, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_1mi37"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il63s"]
-albedo_color = Color(0.870588, 0.870588, 0.870588, 1)
 emission_enabled = true
-emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 16.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_kavuq"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_aim07"]
-ground_color = Color(0, 0, 0, 1)
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_wg4p1"]
+rayleigh_coefficient = 1.0
+rayleigh_color = Color(0.615686, 0.819608, 0.976471, 1)
+mie_coefficient = 0.031
+energy_multiplier = 0.4
 
-[sub_resource type="Sky" id="Sky_4bpvr"]
-sky_material = SubResource("PhysicalSkyMaterial_aim07")
+[sub_resource type="Sky" id="Sky_jwmdj"]
+sky_material = SubResource("PhysicalSkyMaterial_wg4p1")
 
-[sub_resource type="Environment" id="Environment_rwb0e"]
+[sub_resource type="Environment" id="Environment_y0jo5"]
 background_mode = 2
-sky = SubResource("Sky_4bpvr")
-fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
-fog_light_energy = 0.23
-fog_sun_scatter = 0.02
-fog_sky_affect = 0.0
-adjustment_enabled = true
+sky = SubResource("Sky_jwmdj")
 
 [node name="Boveda" type="Node3D"]
 script = ExtResource("1_clqi2")
@@ -40,27 +37,31 @@ script = ExtResource("1_clqi2")
 [node name="Moon" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 91.3773, 0)
 material_override = SubResource("StandardMaterial3D_o3e5x")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_1mi37")
 script = ExtResource("2_3hjd4")
 
 [node name="Corio" type="MeshInstance3D" parent="."]
 transform = Transform3D(175, 0, 0, 0, 175, 0, 0, 0, 175, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_il63s")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_kavuq")
 script = ExtResource("5_ixer7")
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+[node name="MoonLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.9651, 0)
-light_energy = 0.4
 light_angular_distance = 5.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
 sky_mode = 1
 script = ExtResource("4_pf5qs")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="CorioLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.48256, 0)
-light_energy = 3.0
-light_angular_distance = 3.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
 script = ExtResource("5_th5vk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rwb0e")
+environment = SubResource("Environment_y0jo5")
+script = ExtResource("6_xnt6h")

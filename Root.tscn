@@ -32,13 +32,21 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_vbdpd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Plano"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32215, 0.959869, 0)
-light_energy = 0.103
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63581, 2.60028, -8.30097)
+light_energy = 1.184
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 2.297
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plano"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plano/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iy1vr")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Plano"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111704, 0.867819, 0.0124691)
+light_energy = 1.184
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 2.297
 
 [node name="Mesa" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.68, 0, 0, 0, 1.68, 0, 0, 0, 1.68, 5.51902, 0.842203, -8.33611)
@@ -59,4 +67,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75797, 1.46655, -5.2045)
 clock = NodePath("../Mesa/Reloj")
 
 [node name="Telescopio" parent="." instance=ExtResource("5_btv3u")]
-transform = Transform3D(1.79, 0, 0, 0, 1.79, 0, 0, 0, 1.79, -0.559575, 1.19209e-07, -3.20286)
+transform = Transform3D(-2, 1.74846e-07, 7.64274e-15, 0, -8.74228e-08, 2, 1.74846e-07, 2, 8.74228e-08, 0, 1.96949, 0)

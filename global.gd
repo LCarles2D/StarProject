@@ -1,8 +1,8 @@
 extends Node
 
 #TIEMPO:
-var Time_Factor      = 50
-var Sideral_Time     = -5 * 30*30 # In Hours
+var Time_Factor      = 100
+var Sideral_Time     = -5.8 * 30*30 # In Hours
 var Civil_Time       = [0,0,0] # hours, minutes, seconds
 var Calendary        = [0,0,0] # Day, Month, Year
 var Global_Time      = 0 # in Days
@@ -22,11 +22,13 @@ var MinutesperHour   = 30.0
 var SecondsperMinute = 30.0
 
 #BOVEDA:
-var Camera_Declination = 0
-var Camera_Ascension   = 0
-var radius             = 1000
-var latitude           = 45
-var Pollution          = 0
+var Camera_Declination    = 0
+var Camera_Ascension      = 0
+var Telescope_Declination = 0
+var Telescope_Ascension   = 0
+var radius                = 1000
+var latitude              = 45
+var Pollution             = 0
 
 #CONVERSIONES
 var DegtoRad = PI/180

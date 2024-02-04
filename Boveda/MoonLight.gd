@@ -2,6 +2,8 @@ extends DirectionalLight3D
 
 @onready var Moon = $"../Moon"
 
+var ColorC = 1
+
 func _process(_d):
 	#CALCULO DE LA ALTURA Y ACIMUT:
 	var d = -Moon.Moon_Dec * Global.DegtoRad
@@ -10,16 +12,6 @@ func _process(_d):
 
 	
 	var a = asin( sin(p)*sin(d) + cos(p)*cos(d)*cos(-H) )
-	"""
-	var limit = 5*Global.DegtoRad
-	
-	if a > -limit and a < limit:
-		Global.Pollution = sin((PI/2)*(a/(5*Global.DegtoRad)))
-	if a >= limit:
-		Global.Pollution = 1
-	if a < -limit: 
-		Global.Pollution = 0
-	"""
 	var sinA = -sin(H) * cos(d)/cos(a) 
 	var cosA = (sin(d) - sin(p)*sin(a))/(cos(p)*cos(a))
 	
@@ -35,6 +27,18 @@ func _process(_d):
 	rotation.y = PI - A
 	rotation.x = a
 	
-	var f = Moon.Moon_Elo/(4*PI)	
-	set_param(Light3D.PARAM_ENERGY,f)
-	pass
+	var f = Moon.Moon_Elo/(4*PI)
+	
+	if -a < 0:
+		f = 0.0
+		
+	set_param(self.PARAM_ENERGY,f)
+	
+	var limit = 4*Global.DegtoRad
+	
+	if -a <= 5*limit:
+		ColorC = (-a + 2*limit)/(7*limit)
+	if ColorC > 1:
+		ColorC = 1
+	if ColorC < 0:
+		ColorC = 0
