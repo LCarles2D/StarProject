@@ -11,6 +11,7 @@ var t_move = 0.0
 
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.1
+const target_looking_fov = 60.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
@@ -18,6 +19,10 @@ var gravity = 9.8
 #Head
 @onready var head = $Head
 @onready var camara = $Head/Camera3D
+
+var playing = Global.GameState.PLAYING
+var telescope = Global.GameState.TELESCOPE
+var looking = Global.GameState.LOOKING
 
 
 func _ready():
@@ -31,14 +36,27 @@ func _unhandled_input(event):
 		
 func _physics_process(delta):
 	
-	#Permitir los controles dependiendo del gamestate
-	if Global._get_gamestate() != Global.GameState.PLAYING:
-		if Input.is_action_just_pressed("close") and (Global._get_gamestate() == Global.GameState.TELESCOPE):
-			Global._set_gamestate(Global.GameState.PLAYING)
+	var current_gamestate = Global._get_gamestate()
+	
+	#Permitir salir del modo TELESCOPE
+	if current_gamestate == telescope:
+		if Input.is_action_just_pressed("close"):
+			Global._set_gamestate(playing)
 			camara.current = true
 			$"../Control".visible = true
 		return
 	
+	
+	if Input.is_action_pressed("looking"):
+		camara.fov = target_looking_fov
+		Global._set_gamestate(looking)
+		
+	elif Input.is_action_just_released("looking"):
+		Global._set_gamestate(Global.GameState.PLAYING)
+		
+			
+			
+			
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -68,15 +86,19 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 2.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 2.0)
 	
+
+	
 	#FOV 
-	var velocity_clamped = clamp(velocity.length(), 0.5, RUN_SPEED * 2.0)
-	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-	camara.fov = lerp(camara.fov, target_fov, delta * 0.8)
+	if Global._get_gamestate() == Global.GameState.PLAYING:
+		var velocity_clamped = clamp(velocity.length(), 0.5, RUN_SPEED * 2.0)
+		var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+		camara.fov = lerp(camara.fov, target_fov, delta * 0.8)
 	
 	#Head move
 	t_move += delta * velocity.length() * float(is_on_floor())
 	camara.transform.origin = _HeadMove(t_move)
 	move_and_slide()
+	
 	
 	
 	#OBTENIENDO HACIA ADONDE APUNTA EL JUGADOR (TAREA PARA LUIS MOVER ESTO A UN SITIO CON MAS SENTIDO)
@@ -99,14 +121,12 @@ func _physics_process(delta):
 	Global.Camera_Declination = d / Global.DegtoRad
 	Global.Camera_Ascension   = (Global.Sideral_Time*Global.SectoRad - H)/ Global.HoutoRad
 		
-	#print(Vector2(Global.Camera_Declination,Global.Camera_Ascension))
+	
 	
 func _HeadMove(time):
 	var pos = Vector3(0,0,0)
 	pos.y = sin(time * FREQ) * AMP
 	pos.x = cos(time * FREQ / 2) * AMP
 	return pos
-
-
 
 

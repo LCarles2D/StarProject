@@ -31,7 +31,7 @@ func _process(_d):
 	if -a < -limit: 
 		Global.Pollution = 0
 		
-	print(a)#Global.Pollution)
+	#print(a)#Global.Pollution)
 	
 	var sinA = -sin(H) * cos(d)/cos(a) 
 	var cosA = (sin(d) - sin(p)*sin(a))/(cos(p)*cos(a))

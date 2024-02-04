@@ -1,7 +1,7 @@
 extends Node
 
 #TIEMPO:
-var Time_Factor      = 50
+var Time_Factor      = 200
 var Sideral_Time     = -5 * 30*30 # In Hours
 var Civil_Time       = [0,0,0] # hours, minutes, seconds
 var Calendary        = [0,0,0] # Day, Month, Year
