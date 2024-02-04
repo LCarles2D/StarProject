@@ -119,7 +119,7 @@ func _physics_process(delta):
 			H = PI - H
 		
 	Global.Camera_Declination = d / Global.DegtoRad
-	Global.Camera_Ascension   = (Global.Sideral_Time*Global.SectoRad - H)/ Global.HoutoRad
+	Global.Camera_Ascension   = 2.5 + (Global.Sideral_Time*Global.SectoRad - H)/ Global.HoutoRad
 		
 	
 	

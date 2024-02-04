@@ -66,6 +66,8 @@ script = ExtResource("5_th5vk")
 environment = SubResource("Environment_rwb0e")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 36.0
+offset_top = 30.0
+offset_right = 364.0
+offset_bottom = 53.0
 text = "Estas dentro perro asqueroso me das asco"

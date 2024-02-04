@@ -60,13 +60,11 @@ func _process(_d):
 	for x in Stars:
 		x[0].pos()
 		x[0].pol()
-	var player_xrad = Global.Camera_Declination * Global.DegtoRad
-	var player_yrad = Global.Camera_Ascension * Global.HoutoRad
-	var distance =  _distance(Const[0][1] * Global.DegtoRad,player_xrad,Const[0][2] * Global.HoutoRad, player_yrad)
-	if distance < 1:
+	var player_xrad = Global.Camera_Declination
+	var player_yrad = Global.Camera_Ascension
+	var distance =  Global.distance(Const[0][1],player_xrad,Const[0][2], player_yrad)
+	$Label.text = str(distance)
+	if distance < 10:
 		$Label.text = "Estas dentro perro asqueroso " + str(distance)
 
-func _distance(x1,x2,y1,y2):
-	var distance = sqrt((x2 - x1)**2 + (y2 - y1)**2)
-	$Label.text = str(distance)
-	return distance
+

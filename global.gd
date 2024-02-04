@@ -63,3 +63,12 @@ func _set_gamestate(new_state):
 
 func _get_gamestate():
 	return currentGamestate
+	
+func distance(x1,x2,y1,y2):
+	
+	var d1 = x1*DegtoRad
+	var d2 = x2*DegtoRad
+	var da = (y1 - y2) * HoutoRad
+	var distance = acos( sin(d1)*sin(d2) + cos(d1)*cos(d2)*cos(da) )
+
+	return distance/DegtoRad
