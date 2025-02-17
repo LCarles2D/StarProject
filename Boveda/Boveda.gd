@@ -65,6 +65,16 @@ func _ready():
 		i += 1
 
 func _process(_d):
+
+  # Detección de apuntado
+  var player_xrad = Global.Camera_Declination
+	var player_yrad = Global.Camera_Ascension
+	var distance =  Global.distance(Const[0][1],player_xrad,Const[0][2], player_yrad)
+	$Label.text = str(distance)
+	if distance < 10:
+		$Label.text = "Estas dentro perro asqueroso " + str(distance)
+
+
 	for x in Stars:
 		x[0].pos()
 		x[0].pol()

@@ -15,7 +15,7 @@ func _ready():
 
 func _interaction_avaible(isAvaible, father):
 	self.isAvaible = isAvaible
-	self.father = father
+	self.father = father	
 	if (father.name == "Reloj" and not taked) or (father.name != "Reloj"):
 				textInteraction.visible = isAvaible
 
@@ -33,5 +33,3 @@ func _father_action(object : String):
 		"Telescopio":
 			Global._set_gamestate(Global.GameState.TELESCOPE)
 			camaraPlayer.current = false
-			
-			

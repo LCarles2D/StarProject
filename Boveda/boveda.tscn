@@ -63,5 +63,13 @@ shadow_reverse_cull_face = true
 script = ExtResource("5_th5vk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
 environment = SubResource("Environment_y0jo5")
 script = ExtResource("6_xnt6h")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 30.0
+offset_right = 364.0
+offset_bottom = 53.0
+text = "Estas dentro perro asqueroso me das asco"
